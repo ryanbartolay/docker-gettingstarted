@@ -1,6 +1,8 @@
 # parent image
 FROM node:20-alpine3.17
 
+RUN npm install -g nodemon
+
 # tells docker that when we run commands in the image, to do this under this directory
 WORKDIR /app
 
@@ -19,4 +21,10 @@ EXPOSE 8081
 
 # Unlike RUN, CMD waits for the container to run first
 # defines the default executable of a Docker image. You can run this image as the base of a container without adding command-line arguments.
-CMD ["node", "server.js"]
+#CMD ["node", "server.js"]
+
+# Command for nodemon
+CMD ["npm", "run", "dev"]
+
+# run by
+# docker --run --name myapp -p 4000:4000 myapp5
